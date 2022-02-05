@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CategoryMealsScreen = () => {
+const CategoryMealsScreen = ({ route }) => {
+  const params = route.params;
   return (
     <View>
-      <Text>CategoryMealsScreen</Text>
+      <Text>{params.category}</Text>
     </View>
   );
 };

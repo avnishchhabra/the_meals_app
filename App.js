@@ -7,6 +7,11 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import CategoryMealsScreen from "./screens/CategoryMealsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CustomHeader from "./components/CustomHeader";
+import colors from "./constants/colors";
+import { enableScreens } from "react-native-screens";
+
+enableScreens();
 
 const Stack = createNativeStackNavigator();
 const fetchFonts = () => {
@@ -27,9 +32,23 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: "white",
+          // headerTitle: () => <CustomHeader />,
+        }}
+      >
         <Stack.Screen name="categories" component={CategoriesScreen} />
-        <Stack.Screen name="category_meals" component={CategoryMealsScreen} />
+        <Stack.Screen
+          name="category_meals"
+          component={CategoryMealsScreen}
+          options={({ route }) => ({
+            title: route.params.category,
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
