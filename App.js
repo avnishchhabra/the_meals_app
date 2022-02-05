@@ -5,6 +5,7 @@ import AppLoading from "expo-app-loading";
 import { useState } from "react";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import CategoryMealsScreen from "./screens/CategoryMealsScreen";
+import MealDetailScreen from "./screens/MealDetailScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CustomHeader from "./components/CustomHeader";
@@ -42,12 +43,14 @@ export default function App() {
         }}
       >
         <Stack.Screen name="categories" component={CategoriesScreen} />
+        <Stack.Screen name="category_meals" component={CategoryMealsScreen} />
         <Stack.Screen
-          name="category_meals"
-          component={CategoryMealsScreen}
           options={({ route }) => ({
-            title: route.params.category,
+            title: route.params.title,
+            headerRight: () => <Text>hii</Text>,
           })}
+          name="meal_details"
+          component={MealDetailScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

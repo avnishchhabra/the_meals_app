@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
-import GridItem from "../components/GridItem";
+import GridItem from "../components/CategoryGridItem";
 
 const CategoriesScreen = ({ navigation }) => {
   const gridItem = ({ item }) => {
@@ -16,7 +16,8 @@ const CategoriesScreen = ({ navigation }) => {
       <GridItem
         onPress={() =>
           navigation.navigate("category_meals", {
-            category: item.title,
+            title: item.title,
+            id: item.id,
           })
         }
         title={item.title}
